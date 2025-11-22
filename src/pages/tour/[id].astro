@@ -1,0 +1,21 @@
+---
+import TourViewer from '../../components/TourViewer.jsx'
+
+export async function getStaticPaths() {
+  return [
+    { params: { id: '1' } },
+    { params: { id: '2' } },
+  ]
+}
+
+const id = Astro.params.id
+const image = `/public/scenes/${id}/panorama.jpg`
+---
+
+<html>
+  <body>
+    <div class="viewer">
+      <TourViewer client:only="react" image={image} />
+    </div>
+  </body>
+</html>
